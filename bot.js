@@ -34,7 +34,7 @@ bot.command(['suma', 's'], ctx => {
     ctx.reply(`La suma es ${sum}`);
 });
 
-bot.command(['m'], ctx => {
+bot.command(['m', 'multiplicacion'], ctx => {
     const str = ctx.update.message.text;
     const arrayStr = str.split(' ');
     let mul = 1;
@@ -45,6 +45,24 @@ bot.command(['m'], ctx => {
 
     ctx.reply(`La multiplicación es ${mul}`);
 })
+
+bot.command(['r', 'resta'], ctx => {
+    const str = ctx.update.message.text;
+    const arrayStr = str.split(' ');
+    let res = 0;
+
+    for (i=1; i < arrayStr.length; i++) {
+        if (i == 1) {
+            res = parseInt(arrayStr[i]);
+        }
+        else {
+            res -= parseInt(arrayStr[i]);
+        }
+        
+    }
+
+    ctx.reply(`La resta es ${res}`);
+});
 
 bot.on('sticker', ctx => {
     ctx.reply('oh! Te gustan los sticker');
